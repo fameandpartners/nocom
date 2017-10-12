@@ -10,12 +10,6 @@ import PDPBreakpoints from '../../libs/PDPBreakpoints';
 // Actions
 import * as AppActions from '../../actions/AppActions';
 
-// App Components
-import CodeEntry from '../shared/CodeEntry';
-
-// Assets
-import Lock from '../../../svg/i-key.svg';
-
 function stateToProps(state) {
   // Which part of the Redux global state does our component want to receive as props?
   return {
@@ -47,14 +41,9 @@ class AppMain extends Component {
     // console.log('sideMenuOpen', sideMenuOpen);
     return (
       <div
-        className="App__main u-height--full grid-middle layout-container u-bg--dark"
+        className="App__main u-height--full grid-middle layout-container"
       >
-        <div className="u-margin--auto">
-          <CodeEntry className="App__word-scramble" formId="conversion_code" />
-          <div>
-            <img src={Lock.url} alt="Lock" />
-          </div>
-        </div>
+        <div>This is the pdp stuff</div>
       </div>
     );
   }

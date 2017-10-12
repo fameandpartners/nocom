@@ -18,8 +18,9 @@ class Welcome extends Component {
   render() {
     return (
       <div className="Welcome">
-        <Link to="/">Home</Link>
-        Welcome to the site
+        <Link to="/home">Fame and Partners</Link>
+        <Link to="/pdp">PdP Link</Link>
+        This is the home page
       </div>
     );
   }

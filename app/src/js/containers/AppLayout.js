@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import autoBind from 'react-autobind';
 import { Switch, Route } from 'react-router';
 import App from '../App';
-import Welcome from '../Welcome';
+import Home from '../Home';
 
 class AppLayout extends Component {
   constructor(props) {
@@ -20,8 +20,8 @@ class AppLayout extends Component {
     console.log('hitting AppLayout render');
     return (
       <Switch>
-        <Route path="/welcome" component={Welcome} />
-        <Route exact path="/" component={App} />
+        <Route path="/home" component={Home} />
+        <Route exact path="/pdp" component={App} />
       </Switch>
     );
   }

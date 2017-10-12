@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 // App Components
 import SideMenu from './components/shared/SideMenu';
-import AppMain from './components/pdp/AppMain';
+import AppMain from './components/nocom/AppMain';
 
 // Global Styles
 import '../css/global/variables.scss';
@@ -30,7 +30,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Link to="/welcome">Welcome</Link>
+        <header>
+          <nav className="nav">
+            <Link to="/home">Fame and Partners NoCom</Link>
+          </nav>
+        </header>
         <SideMenu />
         <AppMain />
       </div>
