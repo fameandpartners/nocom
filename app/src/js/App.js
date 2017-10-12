@@ -15,6 +15,9 @@ import '../css/layout.scss';
 import '../css/typography.scss';
 import '../css/components/App.scss';
 
+// var firebase = require('firebase');
+// var firebaseui = require('firebaseui');
+
 class App extends Component {
   constructor(props) {
     super(props);

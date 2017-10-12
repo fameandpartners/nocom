@@ -4,6 +4,7 @@ import { Switch, Route } from 'react-router';
 import App from '../App';
 import Product from '../Product';
 import Home from '../Home';
+import Login from '../Login';
 
 class AppLayout extends Component {
   constructor(props) {
@@ -24,6 +25,7 @@ class AppLayout extends Component {
         <Route path="/home" component={Home} />
         <Route exact path="/pdp" component={App} />
         <Route path="/product/:id" component={Product} />
+        <Route path="/login" component={Login} />
       </Switch>
     );
   }
