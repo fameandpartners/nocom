@@ -44,14 +44,32 @@ class AppMain extends Component {
         className="App__main u-height--full grid-middle layout-container"
       >
         <div>This is the pdp stuff</div>
+        <div className="div grid-12 u-width--full">
+          <div className="col-6">
+            <img src="http://via.placeholder.com/500x800" alt="Dress" />
+          </div>
+          <div className="col-6">
+            <div className="grid-12">
+              <h2>Dress [Name]</h2>
+              <ul>
+                <li>Dress Price</li>
+                <li>Dress Color</li>
+                <li>Dress Color</li>
+                <button>Add To Bag</button>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
 }
 
+/* eslint-disable */
 AppMain.propTypes = {
   // sideMenuOpen: PropTypes.bool,
   activateSideMenu: PropTypes.func.isRequired,
+  product: PropTypes.obj,
   // // Decorator Props
   // breakpoint: PropTypes.string.isRequired,
   // winWidth: PropTypes.number.isRequired,

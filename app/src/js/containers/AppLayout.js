@@ -18,7 +18,7 @@ class AppLayout extends Component {
   }
 
   render() {
-    console.log('hitting AppLayout render');
+    console.log('hitting AppLayout render', this.props);
     return (
       <Switch>
         <Route path="/home" component={Home} />
