@@ -1,18 +1,34 @@
-import React, { Component } from 'react';
-import autoBind from 'react-autobind';
+/* eslint-disable */
+
+import React from 'react';
 import { Link } from 'react-router-dom';
+import * as firebase from 'firebase';
+import autoBind from 'react-autobind';
+
+import FirebaseComponent from './components/nocom/FirebaseComponent';
+import HomePageTile from './components/nocom/HomePageTile';
 
 
-class Welcome extends Component {
+class Home extends FirebaseComponent {
   constructor(props) {
     super(props);
     autoBind(this);
+    
+    this.state = {
+      products: [],
+    };
+    this.connectToFirebase();
+    this.fetchProducts();
   }
-  handleClick() {
-    console.warn('javascript working');
+
+  addProduct(data) {
+    const product = data.val();
+    this.setState({ products: this.state.products.concat(<HomePageTile key={data.key} product={product} />) });
   }
-  sampleTest() {
-    return true;
+
+  fetchProducts() {
+    this.productsDB = firebase.apps[0].database().ref('/products');
+    this.productsDB.on('child_added', this.addProduct);
   }
 
   render() {
@@ -20,10 +36,10 @@ class Welcome extends Component {
       <div className="Welcome">
         <Link to="/home">Fame and Partners</Link>
         <Link to="/pdp">PdP Link</Link>
-        This is the home page
+        <div>{this.state.products}</div>
       </div>
     );
   }
 }
 
-export default Welcome;
+export default Home;

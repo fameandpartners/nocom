@@ -15,8 +15,6 @@ import '../css/layout.scss';
 import '../css/typography.scss';
 import '../css/components/App.scss';
 
-// var firebase = require('firebase');
-// var firebaseui = require('firebaseui');
 
 class App extends Component {
   constructor(props) {
@@ -39,7 +37,7 @@ class App extends Component {
           </nav>
         </header>
         <SideMenu />
-        <AppMain />
+        <AppMain firebaseDatabase="nocom-dev" />
       </div>
     );
   }
