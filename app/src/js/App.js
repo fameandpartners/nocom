@@ -15,6 +15,7 @@ import '../css/layout.scss';
 import '../css/typography.scss';
 import '../css/components/App.scss';
 
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -36,7 +37,7 @@ class App extends Component {
           </nav>
         </header>
         <SideMenu />
-        <AppMain />
+        <AppMain firebaseDatabase="nocom-dev" />
       </div>
     );
   }
