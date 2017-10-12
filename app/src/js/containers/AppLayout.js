@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React, { Component } from 'react';
 import autoBind from 'react-autobind';
 import { Switch, Route } from 'react-router';
@@ -17,12 +19,14 @@ class AppLayout extends Component {
     return true;
   }
 
+  loadHome() {
+    return (<Home firebaseDatabase="nocom-dev"/>)
+  }
   render() {
     console.log('hitting AppLayout render');
-    console.log(this.props);
     return (
       <Switch>
-        <Route path="/home" component={Home} />
+        <Route exact path="/" component={this.loadHome} />
         <Route exact path="/pdp" component={App} />
         <Route path="/product/:id" component={Product} />
       </Switch>
