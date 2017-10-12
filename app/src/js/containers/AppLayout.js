@@ -7,6 +7,7 @@ import App from '../App';
 import Product from '../Product';
 import Home from '../Home';
 import Login from '../Login';
+import Cart from '../Cart';
 
 class AppLayout extends Component {
   constructor(props) {
@@ -23,6 +24,11 @@ class AppLayout extends Component {
   loadHome() {
     return (<Home firebaseDatabase="nocom-dev"/>)
   }
+
+  loadCart(props) {
+    return (<Cart firebaseDatabase="nocom-dev" firebaseAPI="AIzaSyDaiBpTAKCzSr8sjP96KKBhCXSt1RT96ys" {...props}/>)
+    
+  }
   render() {
     console.log('hitting AppLayout render');
     return (
@@ -31,6 +37,8 @@ class AppLayout extends Component {
         <Route exact path="/pdp" component={App} />
         <Route path="/product/:id" component={Product} />
         <Route path="/login" component={Login} />
+        <Route path="/cart" component={this.loadCart} />
+           
       </Switch>
     );
   }

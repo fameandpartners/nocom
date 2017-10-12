@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import autoBind from 'react-autobind';
 import { Link } from 'react-router-dom';
+import {browserHistory} from 'react-router';
 
 // App Components
 import SideMenu from './components/shared/SideMenu';
@@ -35,6 +36,10 @@ class App extends Component {
     this.getProductInformation(this.props.match.params.id);
   }
 
+  addToBag() {
+    this.props.history.push( '/login' );
+  }
+  
   render() {
     console.log('this.props', this.props);
     const {
@@ -66,7 +71,7 @@ class App extends Component {
                 <ul>
                   <li>{price}</li>
                   <li dangerouslySetInnerHTML={{__html: description}} />
-                  <button className="btn">Add To Bag</button>
+                  <Link to={{pathname:"/cart", state:this.props.location.state}} className="btn">Add To Bag</Link>
                 </ul>
               </div>
             </div>

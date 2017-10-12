@@ -8,12 +8,6 @@ class Welcome extends Component {
     super(props);
     autoBind(this);
   }
-  handleClick() {
-    console.warn('javascript working');
-  }
-  sampleTest() {
-    return true;
-  }
 
   render() {
     return (
