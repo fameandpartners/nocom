@@ -1,4 +1,7 @@
-import React, { Component } from 'react';
+/* eslint-disable */
+
+import * as firebase from 'firebase';
+import React from 'react';
 import PropTypes from 'prop-types';
 import autoBind from 'react-autobind';
 import { connect } from 'react-redux';
@@ -6,6 +9,8 @@ import { bindActionCreators } from 'redux';
 // import { Motion, spring } from 'react-motion';
 import Resize from '../../decorators/Resize';
 import PDPBreakpoints from '../../libs/PDPBreakpoints';
+import FirebaseComponent from './FirebaseComponent';
+import HomePageTile from './HomePageTile';
 
 // Actions
 import * as AppActions from '../../actions/AppActions';
@@ -23,11 +28,26 @@ function dispatchToProps(dispatch) {
     activateSideMenu: actions.activateSideMenu,
   };
 }
-
-class AppMain extends Component {
+class AppMain extends FirebaseComponent {
   constructor(props) {
     super(props);
     autoBind(this);
+    this.state = {
+      products: [],
+    };
+    this.connectToFirebase();
+    this.fetchProducts();
+  }
+
+  addProduct(data) {
+    console.log('call');
+    const product = data.val();
+    this.setState({ products: this.state.products.concat(<HomePageTile key={data.key} product={product} />) });
+  }
+
+  fetchProducts() {
+    this.productsDB = firebase.apps[0].database().ref('/products');
+    this.productsDB.on('child_added', this.addProduct);
   }
 
   handleCloseMenu() {
@@ -36,31 +56,8 @@ class AppMain extends Component {
   }
 
   render() {
-    // const { sideMenuOpen } = this.props;
-    // console.log('this.breakpoint', this.props.breakpoint);
-    // console.log('sideMenuOpen', sideMenuOpen);
     return (
-      <div
-        className="App__main u-height--full grid-middle layout-container"
-      >
-        <div>This is the pdp stuff</div>
-        <div className="div grid-12 u-width--full">
-          <div className="col-6">
-            <img src="http://via.placeholder.com/500x800" alt="Dress" />
-          </div>
-          <div className="col-6">
-            <div className="grid-12">
-              <h2>Dress [Name]</h2>
-              <ul>
-                <li>Dress Price</li>
-                <li>Dress Color</li>
-                <li>Dress Color</li>
-                <button>Add To Bag</button>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
+      <div className="App__main u-height--full grid-middle layout-container"><div>{this.state.products}</div></div>
     );
   }
 }

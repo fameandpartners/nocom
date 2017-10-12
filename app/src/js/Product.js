@@ -37,15 +37,41 @@ class App extends Component {
 
   render() {
     console.log('this.props', this.props);
+    const {
+      name,
+      description,
+      price,
+      product_id,
+      images,
+    } = this.props.location.state;
     return (
       <div className="Product">
         <header>
           <nav className="nav">
             <Link to="/home">Fame and Partners NoCom</Link>
+            <br />
+            <Link to="/pdp">Go Back to Products</Link>
           </nav>
         </header>
-        <SideMenu />
-        <AppMain />
+        <div
+          className="App__main u-height--full grid-middle layout-container"
+        >
+          <div className="div grid-12 u-width--full">
+            <div className="col-6">
+              <img className="u-width--full" src={images[0].url} alt="Dress" />
+            </div>
+            <div className="col-6">
+              <div className="grid-12">
+                <h2>Dress {name}</h2>
+                <ul>
+                  <li>{price}</li>
+                  <li dangerouslySetInnerHTML={{__html: description}} />
+                  <button className="btn">Add To Bag</button>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
