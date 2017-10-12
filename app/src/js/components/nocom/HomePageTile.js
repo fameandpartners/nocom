@@ -10,7 +10,7 @@ export default class HomePageTile extends React.Component {
   }
 
   renderDress() {
-    return(<tr><td>{this.props.product.name}</td><td><img src={this.props.product.images[0].url} /></td></tr>)
+    return(<tr><td><a href={"/products/" + this.props.product.product_id}>{this.props.product.name}</a></td><td><img src={this.props.product.images[0].url} /></td></tr>)
   }
   
   render() {
