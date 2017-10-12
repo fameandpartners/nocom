@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import autoBind from 'react-autobind';
 import { Switch, Route } from 'react-router';
 import App from '../App';
+import Product from '../Product';
 import Home from '../Home';
 
 class AppLayout extends Component {
@@ -22,6 +23,7 @@ class AppLayout extends Component {
       <Switch>
         <Route path="/home" component={Home} />
         <Route exact path="/pdp" component={App} />
+        <Route path="/product/:id" component={Product} />
       </Switch>
     );
   }
